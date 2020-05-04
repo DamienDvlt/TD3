@@ -35,22 +35,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        showList();
+
         makeAPIGreatAgain();
     }
 
-    private void showList() {
+    private void showList(List<PokeEvolution> pokeEvolutionList) {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }// define an adapter
-        mAdapter = new ListAdapter(input);
+
+        mAdapter = new ListAdapter(pokeEvolutionList);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -72,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RestPokeResponseServeur> call, Response<RestPokeResponseServeur> response) {
                 if(response.isSuccessful() && response.body() != null) {
-                        List<PokeEvolution> PokeEvolutionList = response.body().getResults();
-                        Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
+                        List<PokeEvolution> pokeEvolutionList = response.body().getResults();
+                        showList(pokeEvolutionList);
                     } else {
                     showError();
                 }
