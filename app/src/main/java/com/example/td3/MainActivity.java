@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private SharedPreferences sharedPreferences;
+    private Gson gson;
 
     public MainActivity() {
     }
@@ -35,8 +41,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sharedPreferences = getSharedPreferences("Appli_mobile_3A", Context.MODE_PRIVATE);
 
-        makeAPIGreatAgain();
+        gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        List<PokeEvolution> pokeEvolutionList = getDataFine();
+        if(pokeEvolutionList != null){
+            showList(pokeEvolutionList);
+        } else {
+            makeAPIGreatAgain();
+        }
+    }
+
+    private List<PokeEvolution> getDataFine() {
+        String jsonPokeEvolution = sharedPreferences.getString(Constants.Key_PokeEvolution_List, null);
+
+        if(jsonPokeEvolution == null) {
+            return null;
+        } else {
+            Type listType = new TypeToken<List<PokeEvolution>>() {
+            }.getType();
+            return gson.fromJson(jsonPokeEvolution, listType);
+        }
     }
 
     private void showList(List<PokeEvolution> pokeEvolutionList) {
@@ -53,10 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void makeAPIGreatAgain(){
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -70,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<RestPokeResponseServeur> call, Response<RestPokeResponseServeur> response) {
                 if(response.isSuccessful() && response.body() != null) {
                         List<PokeEvolution> pokeEvolutionList = response.body().getResults();
+                        saveList(pokeEvolutionList);
                         showList(pokeEvolutionList);
                     } else {
                     showError();
@@ -82,6 +107,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void saveList(List<PokeEvolution> pokeEvolutionList) {
+        String jsonString = gson.toJson(pokeEvolutionList);
+        sharedPreferences
+                .edit()
+                .putString(Constants.Key_PokeEvolution_List, jsonString)
+                .apply();
+
+        Toast.makeText(getApplicationContext(), "List OK", Toast.LENGTH_SHORT).show();
     }
 
     private void showError() {
