@@ -1,16 +1,13 @@
 package com.example.td3.controller;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
 import com.example.td3.Constants;
-import com.example.td3.data.PokeEvolutionAPI;
+import com.example.td3.Singletons;
 import com.example.td3.model.PokeEvolution;
 import com.example.td3.model.RestPokeResponseServeur;
 import com.example.td3.view.MainActivity;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -19,8 +16,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainController {
 
@@ -47,14 +42,8 @@ public class MainController {
     }
 
     private void makeAPIGreatAgain(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
 
-        PokeEvolutionAPI PokeEvolutionAPI = retrofit.create(PokeEvolutionAPI.class);
-
-        Call<RestPokeResponseServeur> call = PokeEvolutionAPI.getPokeResponseServeur();
+        Call<RestPokeResponseServeur> call = Singletons.getPokeEvolutionAPI().getPokeResponseServeur();
         call.enqueue(new Callback<RestPokeResponseServeur>() {
             @Override
             public void onResponse(Call<RestPokeResponseServeur> call, Response<RestPokeResponseServeur> response) {
