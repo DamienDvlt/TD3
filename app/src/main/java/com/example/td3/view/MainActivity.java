@@ -1,4 +1,4 @@
-package com.example.td3;
+package com.example.td3.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,12 +9,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.td3.Constants;
+import com.example.td3.data.PokeEvolutionAPI;
+import com.example.td3.R;
+import com.example.td3.model.PokeEvolution;
+import com.example.td3.model.RestPokeResponseServeur;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

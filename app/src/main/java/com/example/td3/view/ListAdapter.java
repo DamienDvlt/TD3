@@ -1,4 +1,4 @@
-package com.example.td3;
+package com.example.td3.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.td3.R;
+import com.example.td3.model.PokeEvolution;
 
 import java.util.List;
 

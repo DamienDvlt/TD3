@@ -1,6 +1,4 @@
-package com.example.td3;
-
-import java.util.List;
+package com.example.td3.model;
 
 public class PokeEvolution {
     private String url;

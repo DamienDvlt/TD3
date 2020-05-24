@@ -1,4 +1,6 @@
-package com.example.td3;
+package com.example.td3.model;
+
+import com.example.td3.model.PokeEvolution;
 
 import java.util.List;
 
