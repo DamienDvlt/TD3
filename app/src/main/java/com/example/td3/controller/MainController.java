@@ -86,7 +86,14 @@ public class MainController {
     }
 
     public void onItemClick (PokeEvolution pokeEvolution) {
+        view.navigateToDetails(pokeEvolution);
+    }
+
+    public void onButtonAClick() {
 
     }
 
+    public void onButtonBClick() {
+
+    }
 }

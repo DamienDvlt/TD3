@@ -14,10 +14,12 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<PokeEvolution> values;
+    private OnItemClickListener listener;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+    public interface OnItemClickListener {
+        void onItemClick(PokeEvolution item);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         TextView txtHeader;
@@ -43,8 +45,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ListAdapter(List<PokeEvolution> myDataset) {
-        values = myDataset;
+    public ListAdapter(List<PokeEvolution> myDataset, OnItemClickListener listener) {
+        this.values = myDataset;
+        this.listener = listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -64,12 +67,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         final PokeEvolution currentPokeEvolution = values.get(position);
         //holder.txtHeader.setText(currentPokeEvolution.getUrl()); pas besoin pour moi
 
         holder.txtFooter.setText(currentPokeEvolution.getUrl());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                listener.onItemClick(currentPokeEvolution);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
