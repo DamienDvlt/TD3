@@ -2,6 +2,7 @@
 
 ## Créateur
 Damien DEVALET alias Kryptouk, étudiant en 3ème année à l'école d'ingénieur ESIEA
+Co fondateur de Autofill Esport
 
 ## Présentation
 Projet consistant en la création d'une application android sur android studio codé en Java sur l'univers de Pokemon.
