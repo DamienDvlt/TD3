@@ -1,4 +1,4 @@
-#Projet Application Mobile Pokemon Evolution
+# Projet Application Mobile Pokemon Evolution
 
 ## Créateur
 Damien DEVALET alias Kryptouk, étudiant en 3ème année à l'école d'ingénieur ESIEA
@@ -20,6 +20,8 @@ Installation du logiciel Android Studio
 
 ### Première écran
 Splash Screen au démarage de l'application
+<img src="https://github.com/Rosutovein/Projet3A/blob/master/img_readme/Share.jpg" width="360" height="640" />
 
 ### Deuxième écran
 Splash Screen
+<img src="https://github.com/Rosutovein/Projet3A/blob/master/img_readme/Share.jpg" width="360" height="640" />
