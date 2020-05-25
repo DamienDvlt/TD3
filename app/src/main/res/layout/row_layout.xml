@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="6dip"
         android:contentDescription="TODO"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/pokeball_style" />
 
     <TextView
         android:id="@+id/secondLine"
@@ -22,7 +22,7 @@
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/icon"
         android:ellipsize="marquee"
-        android:text="Description"
+        android:text="Appuyer pour plus de detail"
         android:textSize="12sp"
         android:singleLine="true" />
 
@@ -37,6 +37,6 @@
         android:layout_toRightOf="@id/icon"
         android:gravity="center_vertical"
         android:text="Example application"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 </RelativeLayout>

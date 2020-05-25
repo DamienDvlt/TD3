@@ -68,9 +68,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final PokeEvolution currentPokeEvolution = values.get(position);
-        //holder.txtHeader.setText(currentPokeEvolution.getUrl()); pas besoin pour moi
+        holder.txtHeader.setText(currentPokeEvolution.getUrl());
 
-        holder.txtFooter.setText(currentPokeEvolution.getUrl());
+        //holder.txtFooter.setText(currentPokeEvolution.getUrl());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
