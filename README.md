@@ -19,9 +19,9 @@ Installation du logiciel Android Studio
 ## Fonctionalités:
 
 ### Première écran
-Splash Screen au démarage de l'application
-<img src="https://github.com/Rosutovein/Projet3A/blob/master/img_readme/Share.jpg" width="360" height="640" />
+* Splash Screen au démarage de l'application
+<img src="https://github.com/DamienDvlt/TD3/blob/master/Projet%20mobile/Screenshot_20200525-214332.jpg" width="360" height="640" />
 
 ### Deuxième écran
-Splash Screen
-<img src="https://github.com/Rosutovein/Projet3A/blob/master/img_readme/Share.jpg" width="360" height="640" />
+* Splash Screen
+<img src="https://github.com/DamienDvlt/TD3/blob/master/Projet%20mobile/Screenshot_20200525-214339.jpg" width="360" height="640" />
