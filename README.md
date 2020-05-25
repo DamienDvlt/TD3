@@ -14,6 +14,7 @@ Installation du logiciel Android Studio
 ## Consignes respectées:
 * Ecran avec une liste d'éléments (chaine d'evolution de Pokemon)
 * Ecran avec le détail d'un élément (photo de la chaine d'evolution du numero en cours theoriquement mais petit soucis)
+* Tout les second écran theoriquement https://github.com/DamienDvlt/TD3/tree/master/Projet%20mobile%20image
 * Appel WebService à une API Rest
 * Stockage de données en cache
 
